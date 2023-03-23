@@ -41,7 +41,26 @@ namespace SOAPFinalExam
             Assert.AreEqual(countryListCode.sISOCode, countryDetails.sISOCode, "Country code doesn't match.");
             Assert.AreEqual(countryListCode.sName, countryDetails.sName, "Country name doesn't match.");
         }
-       
+        [TestMethod]
+        public void RandomFiveCountry()
+        {
+            var countryList = CountryList();
+
+            List<tCountryCodeAndName> RanCountry = new List<tCountryCodeAndName>();
+
+      
+
+            for (int x = 0; x < 5; x++)
+            {
+                RanCountry.Add(RandomCountryCode(countryList));
+            }
+            foreach (var country in RanCountry)
+            {
+                var countryISOCode = countryTest.CountryISOCode(country.sName);
+                Assert.AreEqual(country.sISOCode, countryISOCode, "Country code doesn't match.");
+            }
+
+        }
 
     }
 
